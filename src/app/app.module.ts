@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
 import { EditPersonPage } from '../pages/edit-person/edit-person';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -31,7 +33,9 @@ const config = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    RegisterPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ const config = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    RegisterPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

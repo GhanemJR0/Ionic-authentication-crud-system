@@ -1,17 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Auth Options
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+  
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+        <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+        <button ion-button outline (click)="logIn()">Login By Email</button>
+      </ion-item>
+      <ion-item>
+        <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+        <button ion-button color="secondary" outline (click)="register()">Register</button>
+      </ion-item>
+      <ion-item>
+          <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+          <button ion-button color="danger" outline (click)="logOut()">Logout</button>
+      </ion-item>
+
 </ion-content>
