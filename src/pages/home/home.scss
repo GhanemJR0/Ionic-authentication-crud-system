@@ -1,3 +1,7 @@
 page-home {
-
+    ion-item {
+        h2, p {
+            text-transform: capitalize;
+        }
+    }
 }
