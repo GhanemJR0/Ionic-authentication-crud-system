@@ -7,12 +7,20 @@ import * as firebase from 'firebase/app';
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
+import { UserProfilePage } from '../user-profile/user-profile';
 
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+
+  googleUser = {
+    name: '',
+    userPhoto: '',
+    email: '',
+    loggedin: false
+  }
 
   constructor(public navCtrl: NavController, public fireAuth: AngularFireAuth) {
   }
@@ -30,13 +38,27 @@ export class ContactPage {
     this.navCtrl.push(RegisterPage);
   }
 
-  logInFacebook() {
+/*   logInFacebook() {
     this.fireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(res => {console.log(res);
     });
-  }
+  } */
 
   logInGoogle() {
-    this.fireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => {console.log(res);
+    this.fireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(res => {
+      this.navCtrl.push(HomePage);
+      console.log(res);
+
+      this.googleUser.name = res.user.displayName;
+      this.googleUser.userPhoto = res.user.photoURL;
+      this.googleUser.email = res.user.email;
+      this.googleUser.loggedin = true;
+
+      this.navCtrl.push(UserProfilePage, {
+        name: this.googleUser.name,
+        userPhoto: this.googleUser.userPhoto,
+        email: this.googleUser.email,
+        loggedin: this.googleUser.loggedin
+      });
     });
   }
 
