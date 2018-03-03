@@ -20,6 +20,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 const config = {
   apiKey: "AIzaSyAPgLY8-vRh2Jle5AMBUW52-vPwLyaoWIY",
   authDomain: "ionicdb-789d9.firebaseapp.com",
@@ -44,6 +46,7 @@ const config = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule

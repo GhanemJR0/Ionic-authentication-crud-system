@@ -9,6 +9,8 @@ import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { UserProfilePage } from '../user-profile/user-profile';
 
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -22,7 +24,7 @@ export class ContactPage {
     loggedin: false
   }
 
-  constructor(public navCtrl: NavController, public fireAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public fireAuth: AngularFireAuth, private storage: Storage) {
   }
 
   logIn() {
@@ -53,12 +55,18 @@ export class ContactPage {
       this.googleUser.email = res.user.email;
       this.googleUser.loggedin = true;
 
-      this.navCtrl.push(UserProfilePage, {
+      this.storage.set('name', res.user.displayName);
+      this.storage.set('userPhoto', res.user.photoURL);
+      this.storage.set('email', res.user.email);
+      this.storage.set('loggedin', true);
+
+      /* this.navCtrl.push(UserProfilePage, {
         name: this.googleUser.name,
         userPhoto: this.googleUser.userPhoto,
         email: this.googleUser.email,
         loggedin: this.googleUser.loggedin
-      });
+      }); */
+
     });
   }
 

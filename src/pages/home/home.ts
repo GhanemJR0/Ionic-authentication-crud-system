@@ -8,6 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { EditPersonPage } from '../edit-person/edit-person';
 import { LoginPage } from '../login/login';
+import { UserProfilePage } from '../user-profile/user-profile';
 
 @Component({
   selector: 'page-home',
@@ -45,6 +46,10 @@ export class HomePage {
 
   deletePerson(id) {
     this.personRef.remove(id);
+  }
+
+  goToProfile() {
+    this.navCtrl.push(UserProfilePage);
   }
 
 }
